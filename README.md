@@ -1,32 +1,29 @@
----
-title: FastAPI
-description: A FastAPI server
-tags:
+## DiscorD & FastAPI API 🤝
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/qI6MGp)
+
+### description
+Able to make Discord Bot Call via GraphQL API using FastAPI as the API server.
+
+Products & Libraries used 👷
   - fastapi
+  - GraphQL
   - hypercorn
   - python
----
+  - pydiscord
+  - Hypercorn
 
-# FastAPI Example
 
-This example starts up a [FastAPI](https://fastapi.tiangolo.com/) server.
-
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/-NvLj4?referralCode=CRJ8FE)
-## ✨ Features
-
-- FastAPI
-- [Hypercorn](https://hypercorn.readthedocs.io/)
-- Python 3
-
-## 💁‍♀️ How to use
+## How to 🤨
 
 - Clone locally and install packages with pip using `pip install -r requirements.txt`
 - Run locally using `hypercorn main:app --reload`
 
-## 📝 Notes
+## Features 🚀
+- It can get the messages from channels within a category channel.
+- Make a reply via a thread.
+- Send messages to threads and channels alike.
+- Filter responses messages by different fields
 
-- To learn about how to use FastAPI with most of its features, you can visit the [FastAPI Documentation](https://fastapi.tiangolo.com/tutorial/)
-- To learn about Hypercorn and how to configure it, read their [Documentation](https://hypercorn.readthedocs.io/)
-# fastapi-postgres-discord-graphQL
-# fastapi-postgres-discord-graphQL-gh
-# fastapi-postgres-discord-graphQL-gh
+
+[To see more check me out](https://www.gabrielhn.com)
