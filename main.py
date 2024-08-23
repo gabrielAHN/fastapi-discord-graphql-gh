@@ -31,7 +31,7 @@ graphql_app = GraphQLRouter(schema)
 
 app = FastAPI()
 
-origins = ['https://{WEBSITE_URL}']
+origins = [f'https://{WEBSITE_URL}']
 
 app.add_middleware(
     CORSMiddleware,
