@@ -2,6 +2,17 @@ import asyncio
 import discord
 import strawberry
 
+# graphql_schemas/queries.py
+import strawberry
+from llama_calls.llama_service import generate_ai_answer
+from llama_calls.llama_client import get_client  # Import the client getter
+
+from fastapi import FastAPI, HTTPException
+from fastapi import Depends
+# from llama_calls.llama_client import get_client
+# from ollama import Client
+# from main import get_client  # Replace with the actual filename
+
 from typing import List, Optional
 from discord_bot.bot import bot
 from .object_types import (
@@ -72,3 +83,8 @@ class Query:
         )
 
         return result
+
+    @strawberry.field
+    async def GetAIAnswer(self, message: str) -> str:
+        client = get_client()  # Get the client instance
+        return generate_ai_answer(client, message)
