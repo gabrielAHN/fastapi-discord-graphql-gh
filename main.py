@@ -23,6 +23,7 @@ def start_discord_bot():
     asyncio.set_event_loop(loop)
     bot.run(DISCORD_TOKEN)
 
+
 discord_thread = threading.Thread(target=start_discord_bot, daemon=True)
 discord_thread.start()
 
@@ -31,7 +32,10 @@ graphql_app = GraphQLRouter(schema)
 
 app = FastAPI()
 
-origins = ['https://{WEBSITE_URL}']
+origins = [
+    'http://localhost:5173',
+    'https://{WEBSITE_URL}'
+    ]
 
 app.add_middleware(
     CORSMiddleware,
@@ -41,8 +45,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 app.include_router(graphql_app, prefix="/graphql")
+
 
 @app.get("/")
 def read_root():
