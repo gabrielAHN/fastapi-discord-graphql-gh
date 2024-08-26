@@ -1,6 +1,7 @@
 import os
 import threading
 import asyncio
+import logging
 import hypercorn.asyncio
 import strawberry
 
@@ -17,11 +18,15 @@ load_dotenv()
 
 WEBSITE_URL = os.getenv("WEBSITE_URL")
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 def start_discord_bot():
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     bot.run(DISCORD_TOKEN)
+
 
 discord_thread = threading.Thread(target=start_discord_bot, daemon=True)
 discord_thread.start()
@@ -31,7 +36,8 @@ graphql_app = GraphQLRouter(schema)
 
 app = FastAPI()
 
-origins = ['https://{WEBSITE_URL}']
+origins = [
+    f'https://{WEBSITE_URL}', 'http://localhost:5173']
 
 app.add_middleware(
     CORSMiddleware,
@@ -41,8 +47,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 app.include_router(graphql_app, prefix="/graphql")
+
 
 @app.get("/")
 def read_root():

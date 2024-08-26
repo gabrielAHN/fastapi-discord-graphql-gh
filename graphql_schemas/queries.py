@@ -2,6 +2,11 @@ import asyncio
 import discord
 import strawberry
 
+import strawberry
+from llama_calls.llama_service import generate_ai_answer
+from llama_calls.llama_client import get_client  # Import the client getter
+
+
 from typing import List, Optional
 from discord_bot.bot import bot
 from .object_types import (
@@ -72,3 +77,8 @@ class Query:
         )
 
         return result
+
+    @strawberry.field
+    async def GetAIAnswer(self, message: str) -> str:
+        client = get_client()
+        return generate_ai_answer(client, message)
